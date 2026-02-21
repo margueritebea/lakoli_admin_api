@@ -103,43 +103,59 @@ Application backend complète pour la gestion d'établissements scolaires inclua
 - Redis 7+
 - Git
 ```
-
 ### Installation Locale (Développement)
-
-```bash
+````bash
 # 1. Cloner le repository
 git clone https://github.com/margueritebea/lakoli_admin_api.git
+# ou via SSH
+git clone git@github.com:margueritebea/lakoli_admin_api.git
 
-ou si vous utiliser le ssh:    git clone git@github.com:margueritebea/lakoli_admin_api.git
-cd school-backend
-
-# 2. Créer environnement virtuel
-python3.x -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# .venv\Scripts\activate   # Windows
-
-# 3. Installer les dépendances
-pip install -r requirements/development.txt
-
-# 4. Créer fichier .env
+cd lakoli_admin_api
+````
+````bash
+# 2. Installer les dépendances avec Make
+make setup        # Linux / Mac
+make setupwin     # Windows
+````
+````bash
+# 3. Activer l'environnement virtuel
+source .venv/bin/activate   # Linux / Mac
+.venv\Scripts\activate      # Windows
+````
+````bash
+# 4. Créer le fichier .env
 cp .env.example .env
-
-# 5. laisser sqlite par defaut ou
-# Créer la base de données PostgreSQL/MySQL/MariaDB ou
-
-
+# Editer .env et renseigner vos variables (base de données, secret key, etc.)
+````
+````bash
+# 5. Base de données
+# Par défaut SQLite est utilisé, aucune configuration nécessaire.
+# Pour utiliser PostgreSQL / MySQL / MariaDB,
+# modifier DATABASE_URL dans votre fichier .env
+````
+````bash
 # 6. Appliquer les migrations
-python manage.py migrate
-
+make migrate        # Linux / Mac
+make migratewin     # Windows
+````
+````bash
 # 7. Créer un superutilisateur
-python manage.py createsuperuser
-
-# 8. Charger données de test (optionnel)
-python scripts/seed_data.py # pas encore gerer pour le mo
-
+make createsuperuser        # Linux / Mac
+make createsuperuserwin     # Windows
+````
+````bash
+# 8. Charger des données de test (optionnel — non disponible pour le moment)
+# python scripts/seed_data.py
+````
+````bash
 # 9. Démarrer le serveur
-python manage.py runserver
-```
+make run        # Linux / Mac
+make runwin     # Windows
+````
+
+> Le serveur sera accessible sur **http://127.0.0.1:8000**
+
+> Pour afficher toutes les commandes Make disponibles : `make help`
 
 ### Démarrer Services Externes
 
