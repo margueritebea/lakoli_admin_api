@@ -1,22 +1,9 @@
 # lakoli_admin_api
-
-## 🚀 Installation
-
-```bash
-make setup
-```
-
-## ▶️ Lancer le serveur
-
-```bash
-make run
-```
-
-# 🎓 School Management System - Backend API
+#  School Management System - Backend API
 
 Système de gestion scolaire complet développé avec Django & Django REST Framework pour gérer plus de 900 élèves.
 
-## 📋 Table des Matières
+## Table des Matières
 
 1. [Vue d'ensemble](#vue-densemble)
 2. [Fonctionnalités](#fonctionnalités)
@@ -30,15 +17,14 @@ Système de gestion scolaire complet développé avec Django & Django REST Frame
 
 ---
 
-## 🎯 Vue d'ensemble
+## Vue d'ensemble
 
 Application backend complète pour la gestion d'établissements scolaires incluant :
 - Gestion des utilisateurs (élèves, enseignants, parents, administrateurs)
 - Système pédagogique (notes, emplois du temps, présences, bulletins)
 - Gestion administrative (années scolaires, inscriptions, salles)
 - Module financier (frais, factures, paiements)
-- Communication (messagerie, notifications, actualités)
-- Bibliothèque de ressources pédagogiques
+
 
 **Équipe Backend** : Peve Beavogui  
 **Équipe Frontend** : Ahmed Kipertino  
@@ -46,51 +32,51 @@ Application backend complète pour la gestion d'établissements scolaires inclua
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
-### 👥 Gestion des Utilisateurs
-- ✅ Système de rôles multi-niveaux (Admin, Enseignant, Élève, Parent, Comptable)
-- ✅ Authentification JWT sécurisée
-- ✅ Profils personnalisés par rôle
-- ✅ Gestion des permissions granulaires
+### Gestion des Utilisateurs
+- Système de rôles multi-niveaux (Admin, Enseignant, Élève, Parent, Comptable)
+- Authentification JWT sécurisée
+- Profils personnalisés par rôle
+- Gestion des permissions granulaires
 
-### 📚 Module Pédagogique
-- ✅ Gestion des classes et matières
-- ✅ Emplois du temps dynamiques
-- ✅ Saisie et consultation des notes
-- ✅ Suivi des présences/absences avec notifications
-- ✅ Génération automatique de bulletins (PDF)
-- ✅ Cahier de texte numérique
-- ✅ Gestion des devoirs
+### Module Pédagogique
+- Gestion des classes et matières
+- Emplois du temps dynamiques
+- Saisie et consultation des notes
+- Suivi des présences/absences avec notifications
+- Génération automatique de bulletins (PDF)
+- Cahier de texte numérique
+- Gestion des devoirs
 
-### 🏫 Administration
-- ✅ Gestion des années scolaires
-- ✅ Processus d'inscription
-- ✅ Gestion des salles et équipements
-- ✅ Personnel non-enseignant
+###  Administration
+- Gestion des années scolaires
+- Processus d'inscription
+- Gestion des salles et équipements
+- Personnel non-enseignant
 
-### 💰 Finances
-- ✅ Définition des frais scolaires
-- ✅ Génération de factures
-- ✅ Suivi des paiements (espèces, mobile money, etc.)
-- ✅ Rappels automatiques de paiement
-- ✅ Rapports financiers (Excel/PDF)
+### Finances
+- Définition des frais scolaires
+- Génération de factures
+- Suivi des paiements (espèces, mobile money, etc.)
+- Rappels automatiques de paiement
+- Rapports financiers (Excel/PDF)
 
-### 📢 Communication
-- ✅ Messagerie interne
-- ✅ Système de notifications
-- ✅ Actualités de l'école
-- ✅ Notifications email/SMS
+### Communication
+- Messagerie interne
+- Système de notifications
+- Actualités de l'école
+- Notifications email/SMS
 
-### 📖 Bibliothèque
-- ✅ Stockage de documents pédagogiques
-- ✅ Gestion des devoirs
-- ✅ Cahier de texte
-- ✅ Versioning des documents
+### Bibliothèque
+- Stockage de documents pédagogiques
+- Gestion des devoirs
+- Cahier de texte
+- Versioning des documents
 
 ---
 
-## 🛠 Stack Technique
+## Stack Technique
 
 | Technologie | Version | Usage |
 |-------------|---------|-------|
@@ -107,13 +93,13 @@ Application backend complète pour la gestion d'établissements scolaires inclua
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prérequis
 
 ```bash
 - Python 3.11+
-- PostgreSQL 15+
+- PostgreSQL 15+(sqlite pour debuter)
 - Redis 7+
 - Git
 ```
@@ -122,13 +108,15 @@ Application backend complète pour la gestion d'établissements scolaires inclua
 
 ```bash
 # 1. Cloner le repository
-git clone https://github.com/votre-org/school-backend.git
+git clone https://github.com/margueritebea/lakoli_admin_api.git
+
+ou si vous utiliser le ssh:    git clone git@github.com:margueritebea/lakoli_admin_api.git
 cd school-backend
 
 # 2. Créer environnement virtuel
-python3.11 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
+python3.x -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# .venv\Scripts\activate   # Windows
 
 # 3. Installer les dépendances
 pip install -r requirements/development.txt
@@ -136,8 +124,9 @@ pip install -r requirements/development.txt
 # 4. Créer fichier .env
 cp .env.example .env
 
-# 5. Créer la base de données PostgreSQL
-createdb school_db
+# 5. laisser sqlite par defaut ou
+# Créer la base de données PostgreSQL/MySQL/MariaDB ou
+
 
 # 6. Appliquer les migrations
 python manage.py migrate
@@ -146,7 +135,7 @@ python manage.py migrate
 python manage.py createsuperuser
 
 # 8. Charger données de test (optionnel)
-python scripts/seed_data.py
+python scripts/seed_data.py # pas encore gerer pour le mo
 
 # 9. Démarrer le serveur
 python manage.py runserver
@@ -165,35 +154,16 @@ celery -A config worker -l info
 celery -A config beat -l info
 ```
 
-### Installation avec Docker
-
-```bash
-# 1. Cloner le projet
-git clone https://github.com/votre-org/school-backend.git
-cd school-backend
-
-# 2. Créer fichier .env
-cp .env.example .env
-
-# 3. Build et démarrer
-docker-compose -f docker/docker-compose.yml up --build
-
-# 4. Migrations
-docker-compose -f docker/docker-compose.yml exec web python manage.py migrate
-
-# 5. Créer superuser
-docker-compose -f docker/docker-compose.yml exec web python manage.py createsuperuser
-```
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Variables d'Environnement (.env)
 
 ```bash
 # Django
-DJANGO_SETTINGS_MODULE=config.settings.development
+DJANGO_SETTINGS_MODULE=config.settings
 SECRET_KEY=your-secret-key-here
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -243,10 +213,10 @@ POST   /api/v1/users/{id}/change_password/
 
 #### Élèves
 ```
-GET    /api/v1/eleves/                  # Liste élèves
-GET    /api/v1/eleves/{id}/             # Détails élève
-GET    /api/v1/eleves/by_classe/        # Élèves par classe
-GET    /api/v1/eleves/{id}/bulletin_history/
+GET    /api/v1/students/                  # Liste élèves
+GET    /api/v1/students/{id}/             # Détails élève
+GET    /api/v1/students/by_classe/        # Élèves par classe
+GET    /api/v1/students/{id}/bulletin_history/
 ```
 
 #### Classes
@@ -284,95 +254,14 @@ POST   /api/v1/paiements/{id}/valider/
 Une fois le serveur démarré, accédez à :
 - **Swagger UI** : http://localhost:8000/api/schema/swagger-ui/
 - **ReDoc** : http://localhost:8000/api/schema/redoc/
-- **Admin Django** : http://localhost:8000/admin/
+- **Admin Django** : http://localhost:8000/lakoli-su-admin/
 
 ---
 
-## 🧪 Tests
-
-### Lancer les Tests
-
-```bash
-# Tous les tests
-pytest
-
-# Tests avec couverture
-pytest --cov=apps --cov-report=html
-
-# Tests d'une app spécifique
-pytest apps/users/tests/
-
-# Tests en parallèle (plus rapide)
-pytest -n auto
-
-# Tests avec output détaillé
-pytest -vv
-```
-
-### Qualité du Code
-
-```bash
-# Formatage avec Black
-black apps/
-
-# Vérification imports
-isort apps/
-
-# Linting
-flake8 apps/
-pylint apps/
-```
 
 ---
 
-## 🚢 Déploiement
-
-### Déploiement Production (VPS)
-
-```bash
-# 1. SSH vers serveur
-ssh user@votre-serveur.com
-
-# 2. Cloner projet
-git clone https://github.com/votre-org/school-backend.git
-cd school-backend
-
-# 3. Copier et configurer .env
-cp .env.example .env
-nano .env  # Configurer les variables
-
-# 4. Lancer avec Docker
-docker-compose -f docker/docker-compose.yml up -d
-
-# 5. Migrations
-docker-compose exec web python manage.py migrate
-
-# 6. Collecter fichiers statiques
-docker-compose exec web python manage.py collectstatic --noinput
-
-# 7. Créer superuser
-docker-compose exec web python manage.py createsuperuser
-```
-
-### Commandes Utiles en Production
-
-```bash
-# Voir les logs
-docker-compose logs -f web
-
-# Redémarrer service
-docker-compose restart web
-
-# Backup base de données
-docker-compose exec db pg_dump -U school_user school_db > backup.sql
-
-# Restaurer backup
-docker-compose exec -T db psql -U school_user school_db < backup.sql
-```
-
----
-
-## 🤝 Contribution
+##  Contribution
 
 ### Workflow Git
 
@@ -404,7 +293,7 @@ chore: Tâches maintenance
 
 ---
 
-## 📝 Licence
+## Licence
 
 Copyright © 2026 - Tous droits réservés
 
@@ -415,8 +304,8 @@ Copyright © 2026 - Tous droits réservés
 **Backend Developer** : Peve Beavogui  
 **Frontend Developer** : Ahmed Kipertino  
 
-**Email** : contact@votre-ecole.com  
-**Website** : https://votre-ecole.com
+**Email** : 
+**Website** : 
 
 ---
 
