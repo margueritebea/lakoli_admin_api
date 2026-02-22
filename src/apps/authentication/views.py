@@ -2,19 +2,19 @@
 Views pour l'authentification par cookies JWT.
 
 Endpoints :
-  POST   /auth/login/           → connexion, pose cookies
-  POST   /auth/logout/          → supprime cookies
-  POST   /auth/refresh/         → renouvelle access_token via refresh cookie
-  GET    /auth/me/              → profil utilisateur connecté
-  PATCH  /auth/me/              → mise à jour profil
-  POST   /auth/change-password/ → changement mot de passe
-  POST   /auth/reset-password/  → demande de réinitialisation
-  POST   /auth/reset-password/confirm/ → confirmation réinitialisation
-  GET    /auth/users/           → liste utilisateurs (admin)
-  POST   /auth/users/           → créer un utilisateur (admin)
-  GET    /auth/users/<pk>/      → détail utilisateur (admin)
-  PATCH  /auth/users/<pk>/      → modifier utilisateur (admin)
-  DELETE /auth/users/<pk>/      → désactiver utilisateur (admin)
+  POST   /users/login/           → connexion, pose cookies
+  POST   /users/logout/          → supprime cookies
+  POST   /users/refresh/         → renouvelle access_token via refresh cookie
+  GET    /users/me/              → profil utilisateur connecté
+  PATCH  /users/me/              → mise à jour profil
+  POST   /users/change-password/ → changement mot de passe
+  POST   /users/reset-password/  → demande de réinitialisation
+  POST   /users/reset-password/confirm/ → confirmation réinitialisation
+  GET    /users/           → liste utilisateurs (admin)
+  POST   /users/           → créer un utilisateur (admin)
+  GET    /users/<pk>/      → détail utilisateur (admin)
+  PATCH  /users/<pk>/      → modifier utilisateur (admin)
+  DELETE /users/<pk>/      → désactiver utilisateur (admin)
 """
 import jwt
 import logging
