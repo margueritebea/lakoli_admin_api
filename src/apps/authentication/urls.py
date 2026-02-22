@@ -1,14 +1,3 @@
-from django.urls import path
-from . import views
-
-app_name = ""
-
-urlpatterns = [
-    # path("json", views.hellojson, name = "json_hello"),
-]
-
-
-
 """
 URLs pour l'app authentication.
 À inclure dans le urls.py principal :
@@ -43,7 +32,7 @@ urlpatterns = [
     path('reset-password/',             ResetPasswordRequestView.as_view(), name='reset-password'),
     path('reset-password/confirm/',     ResetPasswordConfirmView.as_view(), name='reset-password-confirm'),
 
-    # ── Gestion utilisateurs (admin) ─────────────────────────────────────────
-    path('users/',                      UserListCreateView.as_view(),     name='user-list'),
-    path('users/<int:pk>/',             UserDetailView.as_view(),         name='user-detail'),
+    # ── Gestionutilisateurs (admin) ─────────────────────────────────────────
+    path('',                            UserListCreateView.as_view(),     name='user-list'),
+    path('<int:pk>/',                  UserDetailView.as_view(),         name='user-detail'),
 ]
